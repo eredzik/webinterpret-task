@@ -2,10 +2,17 @@
 This is homework task for Webinterpret company.
 The task is to verify impact of both shipping types on business.
 
+Within repository are 4 important files:
+- This readme - summarizes findings
+- exploration.sql - some sql queries which were used to initially get grasp of the data
+- model.py - core model estimation
+
+
+
 # How to reproduce
 Put the sqlite database into `./data` directory, run codes.
 
-# To check
+# Analysis
 How much is sold with both shipping types - sum of GMV and sum of item counts
 Control for time, category_id, shipping_type, source_country, target_country
 
@@ -30,11 +37,14 @@ Is there any effect of shipping_type in certain years?
 
 With following questions in mind we have another theoretic problem - how to formulate target variable.
 Active_gmv is short for Gross Merchandise Value - this value alone in my opinion by itself can't tell whether shipping types differ - there could many other factors in play which are more important that shipping type.
+
 I can scale that value with use of item_count variable as suggested by interviewer so that I get value that is proportional to overall interest in product. This value is not interpretable as far as I know but should give us estimates less biased by overall popularity of the product.
+
 Because of skewness of the distribution (it seems to be lognormal) as target of model will be chosen log(active_gmv/item_count). It should be interpreted as higher the metric the better (more revenue per unit of available stock)
+
 For modeling categorical data I used two encoding scenarios: Treatment and Sum encoding.
-Treatment encoding encodes data with one reference level so effects from model (namely shipping type there) should be interpreted as effect of swapping reference to treatment (which is shipping B there).
-Sum encoding gives estimates for all categories which should be interpreted as deviation from the mean of all parameters. It allows for less biased comparison and interpretation of parameters as we don't need any reference.
+- Treatment encoding encodes data with one reference level so effects from model (namely shipping type there) should be interpreted as effect of swapping reference to treatment (which is shipping B there).
+- Sum encoding gives estimates for all categories which should be interpreted as deviation from the mean of all parameters. It allows for less biased comparison and interpretation of parameters as we don't need any reference.
 
 # Model results
 
