@@ -44,10 +44,10 @@ Model specified before seems to fit data quite nicely - it has acheived R-square
 We can infer from that model that although shipping B has higher target metric hence better profitability, in many cases this effect is superseded by local effects for certain categories or source/target combination. With use of this model we could predict for given seller's inventory which shipping type he should use for which category or if he had to choose one, give him some objective metric about which one would be more beneficial on average.
 
 For example i chosen some sellers from dataset:
-| Seller_id | target_org  | target_predicted_A | Target_predicted_B                           | Decision                                     |
-| --------- | ----------- | ------------------ | -------------------------------------------- | -------------------------------------------- |
-| 116       | -326.328588 | -365.946997        | -312.731061                                  | Would benefit from switching everything to B |
-| 91129     | -2.693849   | -3.748263          | Would benefit from switching everything to A |
+| Seller_id | target_org  | target_predicted_A | Target_predicted_B | Decision                                     |
+| --------- | ----------- | ------------------ | ------------------ | -------------------------------------------- |
+| 116       | -326.328588 | -365.946997        | -312.731061        | Would benefit from switching everything to B |
+| 8478      | -25.650614  | -1.726079          | -2.997353          | Would benefit from switching everything to A |
 
 But more informative for sellers would be information on what categories should have access to some shipping type -> that would maximize profit. It would require doing same exercise as above but aggregating not only by seller but also by category.
 
